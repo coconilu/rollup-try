@@ -1,13 +1,18 @@
-define(['exports'], (function (exports) { 'use strict';
+define(['exports', 'lodash'], (function (exports, lodash) { 'use strict';
 
-	const Button = 'Button';
+  const Button = 'Button';
 
-	console.log(Button);
+  console.log(Button);
 
-	const rollup = rollup;
+  const throttleFn = lodash.throttle(() => {
+    console.log("throttle");
+  });
 
-	exports.rollup = rollup;
+  const rollup = rollup;
 
-	Object.defineProperty(exports, '__esModule', { value: true });
+  exports.rollup = rollup;
+  exports.throttleFn = throttleFn;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 }));

@@ -1,17 +1,22 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.umd = {}));
-})(this, (function (exports) { 'use strict';
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('lodash')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'lodash'], factory) :
+  (global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.umd = {}, global.lodash));
+})(this, (function (exports, lodash) { 'use strict';
 
-	const Button = 'Button';
+  const Button = 'Button';
 
-	console.log(Button);
+  console.log(Button);
 
-	const rollup = rollup;
+  const throttleFn = lodash.throttle(() => {
+    console.log("throttle");
+  });
 
-	exports.rollup = rollup;
+  const rollup = rollup;
 
-	Object.defineProperty(exports, '__esModule', { value: true });
+  exports.rollup = rollup;
+  exports.throttleFn = throttleFn;
+
+  Object.defineProperty(exports, '__esModule', { value: true });
 
 }));

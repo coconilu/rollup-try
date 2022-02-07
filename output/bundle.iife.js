@@ -1,16 +1,21 @@
-var iife = (function (exports) {
-	'use strict';
+var iife = (function (exports, lodash) {
+  'use strict';
 
-	const Button = 'Button';
+  const Button = 'Button';
 
-	console.log(Button);
+  console.log(Button);
 
-	const rollup = rollup;
+  const throttleFn = lodash.throttle(() => {
+    console.log("throttle");
+  });
 
-	exports.rollup = rollup;
+  const rollup = rollup;
 
-	Object.defineProperty(exports, '__esModule', { value: true });
+  exports.rollup = rollup;
+  exports.throttleFn = throttleFn;
 
-	return exports;
+  Object.defineProperty(exports, '__esModule', { value: true });
 
-})({});
+  return exports;
+
+})({}, lodash);

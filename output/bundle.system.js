@@ -1,14 +1,22 @@
-System.register([], (function (exports) {
-	'use strict';
-	return {
-		execute: (function () {
+System.register(['lodash'], (function (exports) {
+  'use strict';
+  var throttle;
+  return {
+    setters: [function (module) {
+      throttle = module.throttle;
+    }],
+    execute: (function () {
 
-			const Button = 'Button';
+      const Button = 'Button';
 
-			console.log(Button);
+      console.log(Button);
 
-			const rollup = exports('rollup', rollup);
+      const throttleFn = exports('throttleFn', throttle(() => {
+        console.log("throttle");
+      }));
 
-		})
-	};
+      const rollup = exports('rollup', rollup);
+
+    })
+  };
 }));
