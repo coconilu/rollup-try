@@ -1,8 +1,4 @@
-(function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-	typeof define === 'function' && define.amd ? define(['exports'], factory) :
-	(global = typeof globalThis !== 'undefined' ? globalThis : global || self, factory(global.umd = {}));
-})(this, (function (exports) { 'use strict';
+define(['require', 'exports'], (function (require, exports) { 'use strict';
 
 	var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
@@ -617,20 +613,22 @@
 
 	var Button = 'Button';
 
-	var count = 0;
-	function increment() {
-	  count += 1;
-	}
-
-	console.log(count);
-	increment();
-	console.log(count);
+	var dynamicImport = function dynamicImport() {
+	  new Promise(function (resolve, reject) { require(['./incrementer-1d0a7381'], resolve, reject); }).then(function (_ref) {
+	    var count = _ref.count,
+	        increment = _ref.increment;
+	    console.log(count);
+	    increment();
+	    console.log(count);
+	  });
+	};
 	console.log(Button);
 	var throttleFn = throttle_1(function () {
 	  console.log("throttle");
 	});
 	var rollup = rollup;
 
+	exports.dynamicImport = dynamicImport;
 	exports.rollup = rollup;
 	exports.throttleFn = throttleFn;
 

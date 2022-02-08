@@ -1,3 +1,7 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
 /**
@@ -611,18 +615,21 @@ var throttle_1 = throttle;
 
 var Button = 'Button';
 
-var count = 0;
-function increment() {
-  count += 1;
-}
-
-console.log(count);
-increment();
-console.log(count);
+var dynamicImport = function dynamicImport() {
+  Promise.resolve().then(function () { return require('./incrementer-62789671.js'); }).then(function (_ref) {
+    var count = _ref.count,
+        increment = _ref.increment;
+    console.log(count);
+    increment();
+    console.log(count);
+  });
+};
 console.log(Button);
 var throttleFn = throttle_1(function () {
   console.log("throttle");
 });
 var rollup = rollup;
 
-export { rollup, throttleFn };
+exports.dynamicImport = dynamicImport;
+exports.rollup = rollup;
+exports.throttleFn = throttleFn;

@@ -1,4 +1,4 @@
-System.register([], (function (exports) {
+System.register([], (function (exports, module) {
 	'use strict';
 	return {
 		execute: (function () {
@@ -616,14 +616,15 @@ System.register([], (function (exports) {
 
 			var Button = 'Button';
 
-			var count = 0;
-			function increment() {
-			  count += 1;
-			}
-
-			console.log(count);
-			increment();
-			console.log(count);
+			var dynamicImport = exports('dynamicImport', function dynamicImport() {
+			  module.import('./incrementer-4ef7afad.js').then(function (_ref) {
+			    var count = _ref.count,
+			        increment = _ref.increment;
+			    console.log(count);
+			    increment();
+			    console.log(count);
+			  });
+			});
 			console.log(Button);
 			var throttleFn = exports('throttleFn', throttle_1(function () {
 			  console.log("throttle");
